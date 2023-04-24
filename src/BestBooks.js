@@ -1,23 +1,46 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import axios from 'axios';
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      error: ''
     }
   }
 
-  componentDidMount() {
-    fetch('/api/books')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ books: data });
+  // componentDidMount() {
+  //   fetch('/books')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       this.setState({ books: data });
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // }
+
+  async componentDidMount () {
+    try {
+      const config = {
+        method: 'get',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/books'
+      }
+      const response = await axios(config);
+      console.log('this is response', response);
+      this.setState({
+        books: response.data,
+        error: '',
       })
-      .catch(error => {
-        console.error(error);
-      });
+    } catch (error) {
+      console.error('Error with request', error);
+      this.setState({
+        error: `Status Code:${error.response.status}, ${error.response.data}`
+      })
+    }
   }
 
   render() {
@@ -31,7 +54,7 @@ class BestBooks extends React.Component {
                 <img className="d-block w-100" src={book.image} alt={book.title} />
                 <Carousel.Caption>
                   <h3>{book.title}</h3>
-                  <p>{book.author}</p>
+                  <p>{book.description}</p>
                 </Carousel.Caption>
               </Carousel.Item>
             ))}
