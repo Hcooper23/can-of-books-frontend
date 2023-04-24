@@ -22,6 +22,8 @@ All Eastern Standard Time-
 
 Kaeden O' Meara:
 
+PST 12am - 11pm
+
 - What platform will you use to communicate (ie. Slack, phone …)?
 
 Slack and Remo 
@@ -46,6 +48,9 @@ Hayden Cooper:
 
 Kaeden O' Meara:
 
+1. Communication
+2. Problem solving within group environment.
+
 - How can you best utilize these strengths in the development of your application?
 
 Hayden Cooper:
@@ -53,6 +58,8 @@ Hayden Cooper:
 My background in project management will allow us to utilize the skills of time management and collaboration effectively to solve any problems we run into as well develop a timeline for progress that allows us to make effective progress throughout the labs we will be seeing. 
 
 Kaeden O' Meara:
+
+With my ability to communicate within a group environment I will be able to maintain a good workflow with my partner. I tend to work on things at a pace where my partner, and I will be able to find and fix any errors efficiently.
 
 - In what areas do you each want to develop greater strength?
 
@@ -66,7 +73,7 @@ Explaining and clear communication that will allow us to effectivity understand 
 
 - What will your team do if one person is pulling all the weight while the other person is not contributing?
 
-Communicate and allow each other to speak freely and determine what is best outcome. 
+Communicate and allow each other to speak freely and determine what is best outcome.
 
 - What will your team do if one person is taking over the project and not letting the other member contribute?
 
