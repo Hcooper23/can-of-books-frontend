@@ -4,7 +4,7 @@ class Profile extends Component {
 
   render() {
     /* TODO: render information about the developers */
-    return <p>Profile page coming soon</p>
+    return <p> Developed By: Kaeden O' Meara & Hayden Cooper</p>
   }
 };
 
