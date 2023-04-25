@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import axios from 'axios';
+import bookImg from './img/book.jpg';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class BestBooks extends React.Component {
           <Carousel>
             {this.state.books.map(book => (
               <Carousel.Item key={book.id}>
-                <img className="d-block w-100" src={book.image} alt={book.title} />
+                <img className="d-block w-100" src={bookImg} alt={book.title} />
                 <Carousel.Caption>
                   <h3>{book.title}</h3>
                   <p>{book.description}</p>
