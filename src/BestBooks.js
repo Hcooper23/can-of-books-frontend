@@ -59,6 +59,30 @@ class BestBooks extends React.Component {
     }
   }
 
+
+  deleteBook = async (bookID) => {
+    try {
+      //TODO: BUILD OUT THE URL FOR AXIOS
+      let url = `${process.env.REACT_APP_SERVER}/books/${bookID._id}`
+      // console.log(bookID);
+  
+      console.log('url in delete', url)
+      //TODO: PASS THAT URL INTO AXIOS ON A DELETE
+      await axios.delete(url);
+      //TODO: UPDATE STATE
+      let updatedBooks = this.state.books.filter(book => book._id !== bookID._id);
+      // console.log(updatedBooks);
+  
+      this.setState({
+        books: updatedBooks,
+      })
+  
+  
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
   // Method to toggle the visibility of the "Add Book" modal
   toggleBookFormModal = () => {
     this.setState((prevState) => ({
@@ -67,6 +91,7 @@ class BestBooks extends React.Component {
   }
 
   render() {
+    // console.log(this.state.books);
     return (
       <div>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
@@ -79,6 +104,7 @@ class BestBooks extends React.Component {
                 <Carousel.Caption>
                   <h3>{book.title}</h3>
                   <p>{book.description}</p>
+                  <Button onClick={() => this.deleteBook(book)}>Delete Book</Button>
                 </Carousel.Caption>
               </Carousel.Item>
             ))

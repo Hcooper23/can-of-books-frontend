@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import axios from 'axios';
+// import axios from 'axios';
 class BookFormModal extends Component {
   constructor(props) {
     super(props);
@@ -24,29 +24,6 @@ class BookFormModal extends Component {
     console.log('handle submit was called');
     this.props.handleClose();
 
-    // try {
-    //   const config = {
-    //     method: 'post',
-    //     baseURL: process.env.REACT_APP_SERVER,
-    //     url: '/books',
-    //     data: book
-    //   };
-    //   const response = await axios(config);
-    //   console.log(response.data);
-    //   // this.props.onNewBook(response.data);
-    //   // this.setState({
-    //   //   title: '',
-    //   //   description: '',
-    //   //   status: '',
-    //   //   error: ''
-    //   // });
-    //   this.props.onHide();
-    // } catch (error) {
-    //   console.error('Error with request', error);
-    //   this.setState({
-    //     error: `Status Code:${error.response.status}, ${error.response.data}`
-    //   });
-    // }
   };
   render() {
     const { title, description, status, error } = this.state;
