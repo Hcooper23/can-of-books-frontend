@@ -83,3 +83,51 @@ Communicate and allow each other to speak freely and determine what is best outc
 - How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level?
 
 Build upon each others strength and weaknesses and help grow as a team, once effective communication in in place the ability to complete difficult tasks become a thing of the past. Its all about planning, execution, and communication. 
+
+# Project Name
+
+**Author**: Hayden Cooper and Kaeden O'Meara 
+
+**Version**: 1.0.0 
+
+## Overview
+
+Looks are life-changing. They have the power to enlighten, educate, entertain, heal, and help us grow. Build out this code base to create an web app to track what books have impacted you, and what's recommended to read next.
+
+## Getting Started
+
+Clone this repo to your own account with the green "Use this template" button. Then, add any collaborators. Now you are ready to start adding features! Deploy your site to let the world know which books have had the greatest impact on you, and what's recommended. Enjoy!
+
+## Architecture
+
+React, BootStrap, CSS, MongoDB, Render, GitHub, and Netlify
+
+## Change Log
+
+04-24-23- 3:00PM Eastern Time (Opened and copied repo for Front-End / Back-end)
+
+04-24-23- 7:15PM Eastern Time (Merged Front and Back end to deployment test)
+
+04-24-23- 9:25PM Eastern Time (Render Server Deployment and Netlify Project opened to Live Link)
+
+## Estimates
+
+Estimate of time needed to complete: Front-end: 2 Hours, Back-End: 3 Hours
+
+Start time: 3:00PM Eastern Time 
+
+Finish time: 9:15PM Eastern Time 
+
+Actual time needed to complete: 6 Hours and 15 Minutes
+
+## Credit and Collaborations
+
+TA:
+
+Tony Regalado
+Tammy Do
+Stepehen Clemmer
+
+Instructor:
+
+Aubrey Patterson
