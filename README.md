@@ -120,6 +120,16 @@ Finish time: 9:15PM Eastern Time
 
 Actual time needed to complete: 6 Hours and 15 Minutes
 
+Name of feature: I'd like to add a new book to the shelf, so that I can update the list with my own recommendations. / I want to remove books from my list, so that only the most important books are on my shelf.
+
+Estimate of time needed to complete:
+
+Start time: 12:00am pst
+
+Finish time: 4:45pm pst
+
+Actual time needed to complete:
+
 ## Credit and Collaborations
 
 TA:
