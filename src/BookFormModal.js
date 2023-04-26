@@ -1,55 +1,36 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-
+// import axios from 'axios';
 class BookFormModal extends Component {
-  state = {
-    title: '',
-    description: '',
-    status: '',
-    error: ''
-  };
-
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      description: '',
+      status: '',
+      error: ''
+    };
+  }
   handleSubmit = async (event) => {
     event.preventDefault();
-
-    const { bookId, updateBook, handleClose } = this.props;
-    const { title, description, status } = this.state;
-    const updatedBook = { title, description, status };
-
-    try {
-      const response = await fetch(`/books/${bookId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedBook)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to update book.');
-      }
-
-      const updatedBookData = await response.json();
-      updateBook(updatedBookData);
-      handleClose();
-    } catch (error) {
-      console.error(error);
-      this.setState({ error: 'Failed to update book. Please try again.' });
+    const book = {
+      title: event.target.title.value,
+      description: event.target.description.value,
+      status: event.target.status.value
     }
+    console.log(book);
+    this.props.addNewBook(book);
+    console.log('handle submit was called');
+    this.props.handleClose();
   };
-
   render() {
     const { title, description, status, error } = this.state;
     const { onHide, ...modalProps } = this.props;
-
     return (
       <Modal {...modalProps} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Edit Book
+            Add Book
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -60,9 +41,8 @@ class BookFormModal extends Component {
               <Form.Control
                 type="text"
                 placeholder="Enter title"
-                name="title"
                 value={title}
-                onChange={this.handleInputChange}
+                onChange={(event) => this.setState({ title: event.target.value })}
               />
             </Form.Group>
             <Form.Group controlId="description">
@@ -71,18 +51,16 @@ class BookFormModal extends Component {
                 as="textarea"
                 rows={3}
                 placeholder="Enter description"
-                name="description"
                 value={description}
-                onChange={this.handleInputChange}
+                onChange={(event) => this.setState({ description: event.target.value })}
               />
             </Form.Group>
             <Form.Group controlId="status">
               <Form.Label>Status</Form.Label>
               <Form.Control
                 as="select"
-                name="status"
                 value={status}
-                onChange={this.handleInputChange}
+                onChange={(event) => this.setState({ status: event.target.value })}
               >
                 <option value="">Choose...</option>
                 <option value="available">Available</option>
@@ -98,5 +76,4 @@ class BookFormModal extends Component {
     );
   }
 }
-
 export default BookFormModal;
