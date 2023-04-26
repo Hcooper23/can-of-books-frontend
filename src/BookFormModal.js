@@ -13,7 +13,6 @@ class BookFormModal extends Component {
   }
   handleSubmit = async (event) => {
     event.preventDefault();
-
     const book = {
       title: event.target.title.value,
       description: event.target.description.value,
@@ -23,7 +22,6 @@ class BookFormModal extends Component {
     this.props.addNewBook(book);
     console.log('handle submit was called');
     this.props.handleClose();
-
   };
   render() {
     const { title, description, status, error } = this.state;

@@ -13,7 +13,6 @@ class BestBooks extends React.Component {
       showBookFormModal: false // Track if the modal is visible or hidden
     }
   }
-
   async componentDidMount() {
     try {
       const config = {
@@ -34,7 +33,6 @@ class BestBooks extends React.Component {
       })
     }
   }
-
   // Method to add a new book to the list of books
   addNewBook = async (newBookData) => {
     try {
@@ -58,38 +56,30 @@ class BestBooks extends React.Component {
       })
     }
   }
-
-
   deleteBook = async (bookID) => {
     try {
       //TODO: BUILD OUT THE URL FOR AXIOS
       let url = `${process.env.REACT_APP_SERVER}/books/${bookID._id}`
       // console.log(bookID);
-  
       console.log('url in delete', url)
       //TODO: PASS THAT URL INTO AXIOS ON A DELETE
       await axios.delete(url);
       //TODO: UPDATE STATE
       let updatedBooks = this.state.books.filter(book => book._id !== bookID._id);
       // console.log(updatedBooks);
-  
       this.setState({
         books: updatedBooks,
       })
-  
-  
     } catch(error) {
       console.log(error)
     }
   }
-
   // Method to toggle the visibility of the "Add Book" modal
   toggleBookFormModal = () => {
     this.setState((prevState) => ({
       showBookFormModal: !prevState.showBookFormModal
     }));
   }
-
   render() {
     // console.log(this.state.books);
     return (
@@ -120,5 +110,4 @@ class BestBooks extends React.Component {
     )
   }
 }
-
 export default BestBooks;
