@@ -3,6 +3,7 @@ import { Carousel, Button } from 'react-bootstrap';
 import axios from 'axios';
 import bookImg from './img/book.jpg';
 import BookFormModal from './BookFormModal';
+import UpdateBook from './UpdateBook';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -10,7 +11,10 @@ class BestBooks extends React.Component {
     this.state = {
       books: [],
       error: '',
-      showBookFormModal: false // Track if the modal is visible or hidden
+      showBookFormModal: false, // Track if the modal is visible or hidden
+      showUpdateBookForm: false,
+      bookToBeUpdated: null,
+      updateThisBook: null
     }
   }
   async componentDidMount() {
@@ -74,12 +78,44 @@ class BestBooks extends React.Component {
       console.log(error)
     }
   }
+
+  updateBook = async (book) => {
+    console.log('this is book to update', book);
+    try {
+      const config = {
+        method: 'PUT',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: `/books/${book._id}`,
+        data: book
+      }
+      const response = await axios(config);
+      console.log('this is response', response);
+
+    } catch (error) {
+      console.error('Error with request', error);
+      this.setState({
+        error: `Status Code:${error.response.status}, ${error.response.data}`
+      })
+    }
+  }
+
+
+
   // Method to toggle the visibility of the "Add Book" modal
   toggleBookFormModal = () => {
     this.setState((prevState) => ({
       showBookFormModal: !prevState.showBookFormModal
     }));
   }
+
+  handleUpdateBookOpenForm = (book) => {
+    console.log('this is book', book)
+    this.setState({
+      showUpdateBookForm: true,
+      bookToBeUpdated: book
+    })
+  }
+
   render() {
     // console.log(this.state.books);
     return (
@@ -95,6 +131,7 @@ class BestBooks extends React.Component {
                   <h3>{book.title}</h3>
                   <p>{book.description}</p>
                   <Button onClick={() => this.deleteBook(book)}>Delete Book</Button>
+                  <Button onClick={() => this.handleUpdateBookOpenForm(book)}>Update Book</Button>
                 </Carousel.Caption>
               </Carousel.Item>
             ))
@@ -105,6 +142,12 @@ class BestBooks extends React.Component {
           show={this.state.showBookFormModal}
           handleClose={this.toggleBookFormModal}
           addNewBook={this.addNewBook}
+        />
+        <UpdateBook 
+          show={this.state.showUpdateBookForm}
+          handleClose={this.toggleBookFormModal}
+          bookToBeUpdated={this.state.bookToBeUpdated}
+          updateBook={this.updateBook}
         />
       </div>
     )
