@@ -1,68 +1,89 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 // import axios from 'axios';
-class BookFormModal extends Component {
+
+class UpdateBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      description: '',
-      status: '',
-      error: ''
+      showForm: true,
+      title: this.props.bookToBeUpdated?.title,
+      description: this.props.bookToBeUpdated?.description,
+      status: this.props.bookToBeUpdated?.status,
+      _id: this.props.bookToBeUpdated?._id,
+      __v: this.props.bookToBeUpdated?.__v
     };
   }
-  handleSubmit = async (event) => {
+
+  handleBookSubmit = (event) => {
     event.preventDefault();
+    console.log(event);
     const book = {
-      title: event.target.title.value,
-      description: event.target.description.value,
-      status: event.target.status.value
+      title: this.state.title,
+      description: this.state.description,
+      status: this.state.status,
+      _id: this.props.bookToBeUpdated?._id,
+      __v: this.props.bookToBeUpdated?.__v
     }
-    console.log(book);
-    this.props.addNewBook(book);
-    console.log('handle submit was called');
-    this.props.handleClose();
-  };
+    this.props.updateBook(book);
+  }
+
+  setTitle = (event) => {
+    this.setState({
+      title: event.target.value,
+    })
+  }
+
+  setDesc = (event) => {
+    this.setState({
+      description: event.target.value,
+    })
+  }
+
+  setStatus = (event) => {
+    this.setState({
+      status: event.target.value,
+    })
+  }
+
   render() {
     const { title, description, status, error } = this.state;
-    const { show,
-      handleClose } = this.props;
+    const { onHide, ...modalProps } = this.props;
     return (
-      <Modal show={show} onHide={handleClose} size="lg" centered>
+      <Modal {...modalProps} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Add Book
+            Update Book
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {error && <p className="text-danger">{error}</p>}
-          <Form onSubmit={this.handleSubmit}>
+          <Form onSubmit={this.handleBookSubmit}>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter title"
                 value={title}
-                onChange={(event) => this.setState({ title: event.target.value })}
+                onChange={this.setTitle}
               />
             </Form.Group>
             <Form.Group controlId="description">
               <Form.Label>Description</Form.Label>
               <Form.Control
-                // as="textarea"
-                // rows={3}
-                type='text'
+                as="textarea"
+                rows={3}
                 placeholder="Enter description"
                 value={description}
-                onChange={(event) => this.setState({ description: event.target.value })}
+                onChange={this.setDesc}
               />
-            </Form.Group>
+            </Form.Group>  
             <Form.Group controlId="status">
               <Form.Label>Status</Form.Label>
               <Form.Control
                 as="select"
                 value={status}
-                onChange={(event) => this.setState({ status: event.target.value })}
+                onChange={this.setStatus}
               >
                 <option value="">Choose...</option>
                 <option value="available">Available</option>
@@ -77,5 +98,8 @@ class BookFormModal extends Component {
       </Modal>
     );
   }
+
 }
-export default BookFormModal;
+
+
+export default UpdateBook;
