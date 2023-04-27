@@ -14,7 +14,8 @@ class BestBooks extends React.Component {
       showBookFormModal: false, // Track if the modal is visible or hidden
       showUpdateBookForm: false,
       bookToBeUpdated: null,
-      updateThisBook: null
+      updateThisBook: null,
+      showModal: false
     }
   }
   async componentDidMount() {
@@ -91,6 +92,15 @@ class BestBooks extends React.Component {
       const response = await axios(config);
       console.log('this is response', response);
 
+      let updatedBookArray = this.state.books.map(existingBook => {
+        return existingBook._id === book._id ? response.data : existingBook;
+      })
+
+      this.setState({
+        books: updatedBookArray
+      })
+      console.log('new books', updatedBookArray)
+
     } catch (error) {
       console.error('Error with request', error);
       this.setState({
@@ -113,6 +123,12 @@ class BestBooks extends React.Component {
     this.setState({
       showUpdateBookForm: true,
       bookToBeUpdated: book
+    })
+  }
+
+  updateClose = () => {
+    this.setState({
+      showUpdateBookForm: false
     })
   }
 
@@ -148,6 +164,7 @@ class BestBooks extends React.Component {
           handleClose={this.toggleBookFormModal}
           bookToBeUpdated={this.state.bookToBeUpdated}
           updateBook={this.updateBook}
+          closeModal={this.updateClose}
         />
       </div>
     )

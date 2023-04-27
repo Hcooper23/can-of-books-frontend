@@ -11,8 +11,9 @@ class UpdateBook extends Component {
       description: this.props.bookToBeUpdated?.description,
       status: this.props.bookToBeUpdated?.status,
       _id: this.props.bookToBeUpdated?._id,
-      __v: this.props.bookToBeUpdated?.__v
+      __v: this.props.bookToBeUpdated?.__v,
     };
+
   }
 
   handleBookSubmit = (event) => {
@@ -26,6 +27,8 @@ class UpdateBook extends Component {
       __v: this.props.bookToBeUpdated?.__v
     }
     this.props.updateBook(book);
+    this.props.closeModal();
+
   }
 
   setTitle = (event) => {
@@ -77,7 +80,7 @@ class UpdateBook extends Component {
                 value={description}
                 onChange={this.setDesc}
               />
-            </Form.Group>  
+            </Form.Group>
             <Form.Group controlId="status">
               <Form.Label>Status</Form.Label>
               <Form.Control
