@@ -112,23 +112,13 @@ React, BootStrap, CSS, MongoDB, Render, GitHub, and Netlify
 
 ## Estimates
 
-Estimate of time needed to complete: Front-end: 2 Hours, Back-End: 3 Hours
+Estimate of time needed to complete: 5 Hours
 
 Start time: 3:00PM Eastern Time 
 
-Finish time: 9:15PM Eastern Time 
+Finish time: 11:15PM Eastern Time
 
-Actual time needed to complete: 6 Hours and 15 Minutes
-
-Name of feature: I'd like to add a new book to the shelf, so that I can update the list with my own recommendations. / I want to remove books from my list, so that only the most important books are on my shelf.
-
-Estimate of time needed to complete:
-
-Start time: 12:00am pst
-
-Finish time: 4:45pm pst
-
-Actual time needed to complete:
+Actual time needed to complete: 7 Hours and 15Min
 
 ## Credit and Collaborations
 
